@@ -1,1 +1,1 @@
-const clarifai_key = 'asdf'
+const clarifai_key = 'asdfasdfgasdfg'
