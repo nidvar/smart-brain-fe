@@ -1,0 +1,1 @@
+const clarifai_key = '1234'

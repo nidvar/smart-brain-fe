@@ -1,10 +1,12 @@
 import React from 'react';
 
-const ImageForm = ()=>{
+const ImageForm = (props)=>{
+    console.log(props)
     return(
-        <div>
-            <form>
-                <input />
+        <div className="ImageForm">
+            <form onSubmit={props.submit_form}>
+                <p>Insert Link of Picture for facial recognition.</p>
+                <input onChange={props.grab_value} /> <button>DETECT</button>
             </form>
         </div>
     )
