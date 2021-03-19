@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-src/api_keys/
+api_keys/
+fuckyou/
 
 # dependencies
 /node_modules
