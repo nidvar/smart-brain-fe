@@ -20,5 +20,22 @@ body{
 }
 
 .my_container{
-  text-align: center;
+  text-align:center;
+}
+
+.anotherone{
+  display:flex;
+  position:relative;
+  justify-content: center;
+}
+
+.FaceRecog{
+  position: absolute;
+  background-color: yellow;
+  margin:auto;
+}
+
+.test{
+  position:absolute;
+  border:4px solid skyblue;
 }

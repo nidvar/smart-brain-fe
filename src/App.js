@@ -8,7 +8,6 @@ import ImageForm from './components/ImageForm';
 import Particles from 'react-particles-js';
 import clarifai_key from './api_keys/clarifai_key';
 
-
 const particles = {
   number:{
     value:80,
@@ -33,7 +32,9 @@ const app = new Clarifai.App({
 class App extends React.Component{
   state={
     input:'',
-    url:''
+    url:'',
+    data:[],
+    width:0
   }
   onChange=(e)=>{
     console.log(e.target.value)
@@ -47,12 +48,22 @@ class App extends React.Component{
     e.preventDefault();
     this.setState(()=>{
       return {
-        url: this.state.input
+        url: this.state.input,
+        width:document.getElementById('the_picture').width
       }
     })
     app.models.predict(Clarifai.FACE_DETECT_MODEL,this.state.input
       ).then((response) => {
-        console.log(response);
+        const number_of_faces = response.outputs[0].data
+        this.setState(()=>{
+          return {
+            data:number_of_faces,
+          }
+        })
+        console.log(number_of_faces.regions)
+        number_of_faces.regions.forEach(a=>{
+          // console.log(a.region_info.bounding_box)
+        })
       }).catch((err) => {
         console.log(err);
       });
@@ -65,7 +76,7 @@ class App extends React.Component{
         <div className="my_container">
           <ImageForm grab_value={this.onChange} submit_form={this.onSubmit}/>
           <Particles className="particles" params={{particles}} />
-          <FaceRecog url={this.state.url} />
+          <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
         </div>
       </div>
     );
