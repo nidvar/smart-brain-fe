@@ -1,19 +1,9 @@
 import React from 'react';
 
 const FaceRecog = (props)=>{
-    console.log(props)
-    console.log(props.data)
     let x = props.data.regions
-    console.log(x)
-
     let width = props.width;
     let height = 0;
-
-    if(x!=undefined){
-        x.forEach(a=>{
-            console.log(a.region_info.bounding_box)
-        })
-    }
     if(document.getElementById('the_picture')!=null){
         width = document.getElementById('the_picture').width
         height = document.getElementById('the_picture').height
@@ -21,10 +11,10 @@ const FaceRecog = (props)=>{
         width = 0;
         height = 0;
     }
-    
     return(
         <div className="anotherone">
             <div className="FaceRecog">
+                <p>{props.loading_status}</p>
                 <img id="the_picture" src={props.url} />
                 {x!=undefined?x.map(a=><div 
                     key={Math.random()}

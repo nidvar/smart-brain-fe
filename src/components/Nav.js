@@ -2,7 +2,7 @@ import React from 'react';
 
 const Nav = ()=>{
     return(
-        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+        <div className="Nav">
             <p>Sign Out</p>
         </div>
     )

@@ -34,7 +34,8 @@ class App extends React.Component{
     input:'',
     url:'',
     data:[],
-    width:0
+    width:0,
+    loading_status:''
   }
   onChange=(e)=>{
     console.log(e.target.value)
@@ -49,20 +50,19 @@ class App extends React.Component{
     this.setState(()=>{
       return {
         url: this.state.input,
-        width:document.getElementById('the_picture').width
+        width:document.getElementById('the_picture').width,
+        loading_status:'Loading...'
       }
     })
     app.models.predict(Clarifai.FACE_DETECT_MODEL,this.state.input
       ).then((response) => {
         const number_of_faces = response.outputs[0].data
+        console.log(response)
         this.setState(()=>{
           return {
             data:number_of_faces,
+            loading_status:'LOADED!'
           }
-        })
-        console.log(number_of_faces.regions)
-        number_of_faces.regions.forEach(a=>{
-          // console.log(a.region_info.bounding_box)
         })
       }).catch((err) => {
         console.log(err);
@@ -71,12 +71,14 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <Nav />
-        <Logo />
+        <div className="header">
+          <Logo />
+          <Nav />
+        </div>
         <div className="my_container">
           <ImageForm grab_value={this.onChange} submit_form={this.onSubmit}/>
           <Particles className="particles" params={{particles}} />
-          <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
+          <FaceRecog loading_status={this.state.loading_status} width={this.state.width} data={this.state.data} url={this.state.url} />
         </div>
       </div>
     );

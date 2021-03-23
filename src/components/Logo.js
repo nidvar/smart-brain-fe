@@ -4,8 +4,8 @@ import Tilt from 'react-tilt';
 const Logo = ()=>{
     return(
         <div>
-            <Tilt className="Tilt" options={{ max : 25 }} style={{ height: 80, width: 80 }} >
-                <div className="Tilt-inner"> 👽 </div>
+            <Tilt className="Tilt" options={{ max : 25 }} >
+                <div className="Tilt-inner"> Logo </div>
             </Tilt>
         </div>
     )
