@@ -5,25 +5,7 @@ import Nav from './components/Nav';
 import FaceRecog from './components/FaceRecog';
 import Logo from './components/Logo';
 import ImageForm from './components/ImageForm';
-import Particles from 'react-particles-js';
 import clarifai_key from './api_keys/clarifai_key';
-
-const particles = {
-  number:{
-    value:80,
-    density:{
-      enable:true,
-      value_area:800
-    },
-  },
-  line_linked: {
-    shadow: {
-      enable: true,
-      color: "#000000",
-      blur: 1
-    }
-  }
-}
 
 const app = new Clarifai.App({
  apiKey: clarifai_key
@@ -79,7 +61,6 @@ class App extends React.Component{
           <div className="white_box">
           <p>{this.state.loading_status}</p>
             <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
-            <Particles className="particles" params={{particles}} />
           </div>
           <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
         </div>

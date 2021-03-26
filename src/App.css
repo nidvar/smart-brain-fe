@@ -24,16 +24,6 @@ body{
   text-align:center;
 }
 
-
-.particles{
-  position:fixed;
-  left:0;
-  top:0;
-  right:0;
-  bottom:0;
-  z-index: -1;
-}
-
 .Nav{
   margin:10px;
 }
@@ -56,21 +46,14 @@ body{
 }
 
 .ImageForm input{
-  min-width:400px;
+  max-width:400px;
   margin:10px;
-}
-
-@media only screen and (max-width: 600px) {
-  .ImageForm input{
-    min-width:80%;
-    margin:10px;
-  }
 }
 
 .white_box{
   background-color:#EBE0C4;
   color:#655E54;
-  width:800px;
+  max-width:800px;
   height:150px;
   margin:0 auto 10px auto;
   padding:10px;
