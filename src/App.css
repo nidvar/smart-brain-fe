@@ -1,7 +1,7 @@
 body{
   margin:0;
   padding:0;
-  background-color: whitesmoke;
+  background-color:#EBE1DF
 }
 
 .anotherone{
@@ -15,7 +15,7 @@ body{
   margin:auto;
 }
 
-.test{
+.face_box{
   position:absolute;
   border:4px solid skyblue;
 }
@@ -35,7 +35,6 @@ body{
 }
 
 .Nav{
-  
   margin:10px;
 }
 
@@ -66,4 +65,28 @@ body{
     min-width:80%;
     margin:10px;
   }
+}
+
+.white_box{
+  background-color:#EBE0C4;
+  color:#655E54;
+  width:800px;
+  height:150px;
+  margin:0 auto 10px auto;
+  padding:10px;
+  border-radius: 20px;
+}
+
+button{
+  background-color:#EFAF67;
+  border:none;
+  padding:10px;
+  border-radius:15px;
+  color:white;
+}
+
+input{
+  border-radius: 15px;
+  border:none;
+  padding:10px;
 }

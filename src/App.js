@@ -35,7 +35,7 @@ class App extends React.Component{
     url:'',
     data:[],
     width:0,
-    loading_status:''
+    loading_status:'INSERT LINK OF PICTURE FOR FACIAL RECOGNITION'
   }
   onChange=(e)=>{
     console.log(e.target.value)
@@ -76,9 +76,12 @@ class App extends React.Component{
           <Nav />
         </div>
         <div className="my_container">
-          <ImageForm grab_value={this.onChange} submit_form={this.onSubmit}/>
-          <Particles className="particles" params={{particles}} />
-          <FaceRecog loading_status={this.state.loading_status} width={this.state.width} data={this.state.data} url={this.state.url} />
+          <div className="white_box">
+          <p>{this.state.loading_status}</p>
+            <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
+            <Particles className="particles" params={{particles}} />
+          </div>
+          <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
         </div>
       </div>
     );
