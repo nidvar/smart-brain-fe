@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import FaceRecog from './components/FaceRecog';
 import Logo from './components/Logo';
 import ImageForm from './components/ImageForm';
+import Signin from './components/Signin';
 import clarifai_key from './api_keys/clarifai_key';
 
 const app = new Clarifai.App({
@@ -17,7 +18,8 @@ class App extends React.Component{
     url:'',
     data:[],
     width:0,
-    loading_status:'INSERT LINK OF PICTURE FOR FACIAL RECOGNITION'
+    loading_status:'INSERT LINK OF PICTURE FOR FACIAL RECOGNITION',
+    route: 'signin'
   }
   onChange=(e)=>{
     console.log(e.target.value)
@@ -26,6 +28,9 @@ class App extends React.Component{
         input: e.target.value
       }
     })
+  }
+  onRoutechange = (route)=>{
+    this.setState({route:route})
   }
   onSubmit=(e)=>{
     e.preventDefault();
@@ -55,15 +60,22 @@ class App extends React.Component{
       <div className="App">
         <div className="header">
           <Logo />
-          <Nav />
+          <Nav onRoutechange={this.onRoutechange} />
         </div>
-        <div className="my_container">
-          <div className="white_box">
-          <p>{this.state.loading_status}</p>
-            <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
+        {this.state.route == 'signin'?
+          <div>
+            <Signin onRoutechange={this.onRoutechange} />
           </div>
-          <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
-        </div>
+        :
+          <div className="my_container">
+            <div className="white_box">
+            <p>{this.state.loading_status}</p>
+              <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
+            </div>
+            <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
+          </div>
+        }
+        
       </div>
     );
   }

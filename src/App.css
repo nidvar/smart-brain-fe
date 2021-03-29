@@ -28,6 +28,10 @@ body{
   margin:10px;
 }
 
+.Nav p:hover{
+  cursor:pointer;
+}
+
 .header{
   display:flex;
   justify-content: space-between;
@@ -72,4 +76,11 @@ input{
   border-radius: 15px;
   border:none;
   padding:10px;
+}
+
+.Signin{
+  width:600px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
 }

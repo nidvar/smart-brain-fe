@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Nav = ()=>{
+const Nav = (props)=>{
     return(
         <div className="Nav">
-            <p>Sign Out</p>
+            <p onClick={()=>{props.onRoutechange('signin')}} >Sign Out</p>
         </div>
     )
 }
