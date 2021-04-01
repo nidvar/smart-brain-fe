@@ -6,6 +6,7 @@ import FaceRecog from './components/FaceRecog';
 import Logo from './components/Logo';
 import ImageForm from './components/ImageForm';
 import Signin from './components/Signin';
+import Register from './components/Register';
 import clarifai_key from './api_keys/clarifai_key';
 
 const app = new Clarifai.App({
@@ -55,27 +56,42 @@ class App extends React.Component{
         console.log(err);
       });
   }
+  display=()=>{
+    console.log(this.state)
+    if(this.state.route == 'signin'){
+      return(
+        <div>
+          <Signin onRoutechange={this.onRoutechange} />
+        </div>
+      )
+    }
+    if(this.state.route == 'register'){
+      return(
+        <div>
+          <Register onRoutechange={this.onRoutechange} />
+        </div>
+      )
+    }
+    if(this.state.route == 'home'){
+      return(
+        <div className="my_container">
+          <div className="white_box">
+          <p>{this.state.loading_status}</p>
+            <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
+          </div>
+          <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
+        </div>
+      )
+    }
+  }
   render(){
     return (
       <div className="App">
         <div className="header">
           <Logo />
-          <Nav onRoutechange={this.onRoutechange} />
+          <Nav onRoutechange={this.onRoutechange} route_status = {this.state.route} />
         </div>
-        {this.state.route == 'signin'?
-          <div>
-            <Signin onRoutechange={this.onRoutechange} />
-          </div>
-        :
-          <div className="my_container">
-            <div className="white_box">
-            <p>{this.state.loading_status}</p>
-              <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
-            </div>
-            <FaceRecog width={this.state.width} data={this.state.data} url={this.state.url} />
-          </div>
-        }
-        
+        {this.display()}
       </div>
     );
   }
