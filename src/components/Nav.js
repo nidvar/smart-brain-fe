@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Nav = (props)=>{
-    console.log(props)
     if(props.route_status == 'signin'){
         return(
             <div className="Nav">

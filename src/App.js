@@ -23,7 +23,6 @@ class App extends React.Component{
     route: 'signin'
   }
   onChange=(e)=>{
-    console.log(e.target.value)
     this.setState(()=>{
       return {
         input: e.target.value
@@ -45,7 +44,6 @@ class App extends React.Component{
     app.models.predict(Clarifai.FACE_DETECT_MODEL,this.state.input
       ).then((response) => {
         const number_of_faces = response.outputs[0].data
-        console.log(response)
         this.setState(()=>{
           return {
             data:number_of_faces,
@@ -57,7 +55,6 @@ class App extends React.Component{
       });
   }
   display=()=>{
-    console.log(this.state)
     if(this.state.route == 'signin'){
       return(
         <div>
