@@ -20,7 +20,13 @@ class App extends React.Component{
     data:[],
     width:0,
     loading_status:'INSERT LINK OF PICTURE FOR FACIAL RECOGNITION',
-    route: 'signin'
+    route: 'signin',
+    user:{
+      id:'',
+      name:'',
+      email:'',
+      entries:0
+    }
   }
   onChange=(e)=>{
     this.setState(()=>{
@@ -54,6 +60,21 @@ class App extends React.Component{
         console.log(err);
       });
   }
+  grab_user=(e)=>{
+    console.log(e)
+    let user = e[e.length-1]
+    console.log(user)
+    this.setState(()=>{
+      return {
+        user:{
+          id:user.id,
+          name:user.name,
+          email:user.email,
+          entries:0
+        }
+      }
+    })
+  }
   display=()=>{
     if(this.state.route == 'signin'){
       return(
@@ -65,7 +86,7 @@ class App extends React.Component{
     if(this.state.route == 'register'){
       return(
         <div>
-          <Register onRoutechange={this.onRoutechange} />
+          <Register onRoutechange={this.onRoutechange} grab_user = {this.grab_user}/>
         </div>
       )
     }
@@ -73,6 +94,7 @@ class App extends React.Component{
       return(
         <div className="my_container">
           <div className="white_box">
+          <p>{this.state.user.name}</p>
           <p>{this.state.loading_status}</p>
             <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
           </div>

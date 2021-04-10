@@ -46,6 +46,7 @@ class Register extends React.Component {
         })
         .then(a=>{
             console.log(a)
+            this.props.grab_user(a)
         })
     }
     render(){
