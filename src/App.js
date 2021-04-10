@@ -26,7 +26,8 @@ class App extends React.Component{
       name:'',
       email:'',
       entries:0
-    }
+    },
+    signin_status:null
   }
   onChange=(e)=>{
     this.setState(()=>{
@@ -60,9 +61,7 @@ class App extends React.Component{
         console.log(err);
       });
   }
-  grab_user=(e)=>{
-    console.log(e)
-    let user = e[e.length-1]
+  grab_user=(user)=>{
     console.log(user)
     this.setState(()=>{
       return {
@@ -75,11 +74,19 @@ class App extends React.Component{
       }
     })
   }
+  grab_signin_result=(e)=>{
+    this.setState(()=>{
+      return {
+        signin_status:e
+      }
+    })
+  }
   display=()=>{
     if(this.state.route == 'signin'){
       return(
         <div>
-          <Signin onRoutechange={this.onRoutechange} />
+          <Signin onRoutechange={this.onRoutechange} grab_signin_result={this.grab_signin_result} grab_user = {this.grab_user}/>
+          <p>{this.state.signin_status}</p>
         </div>
       )
     }
@@ -108,7 +115,7 @@ class App extends React.Component{
       <div className="App">
         <div className="header">
           <Logo />
-          <Nav onRoutechange={this.onRoutechange} route_status = {this.state.route} />
+          <Nav onRoutechange={this.onRoutechange} route_status = {this.state.route} grab_signin_result={this.grab_signin_result}/>
         </div>
         {this.display()}
       </div>

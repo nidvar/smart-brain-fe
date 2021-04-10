@@ -11,7 +11,10 @@ const Nav = (props)=>{
     }else if(props.route_status == 'home'){
         return(
             <div className="Nav">
-                <p onClick={()=>{props.onRoutechange('signin')}} >Sign Out</p>
+                <p onClick={()=>{
+                    props.onRoutechange('signin')
+                    props.grab_signin_result(null)
+                }} >Sign Out</p>
             </div>
         )
     }else if(props.route_status =='register'){
