@@ -36,14 +36,10 @@ class Signin extends React.Component {
         })
         .then(a=>{
             console.log(a)
-            if(a != 'fail 37-server.js'){
+            if(a[0].name != null){
                 this.props.onRoutechange('home')
-                a.forEach(a=>{
-                    if(a.email == this.state.email){
-                        console.log(a)
-                        this.props.grab_user(a)
-                    }
-                })
+                console.log(a[0])
+                this.props.grab_user(a[0])
             }else{
                 this.props.grab_signin_result('fail')
             }

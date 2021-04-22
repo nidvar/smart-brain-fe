@@ -38,7 +38,8 @@ class Register extends React.Component {
                 id:4,
                 email: this.state.email,
                 password: this.state.password,
-                name: this.state.name
+                name: this.state.name,
+                entries: 0
             })
         })
         .then(a=>{

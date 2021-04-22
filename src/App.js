@@ -51,6 +51,30 @@ class App extends React.Component{
     app.models.predict(Clarifai.FACE_DETECT_MODEL,this.state.input
       ).then((response) => {
         const number_of_faces = response.outputs[0].data
+
+        fetch(`http://localhost:3001/profile/${this.state.user.id}`)
+        .then(a=>{
+          console.log(a.json)
+          return a.json();
+        })
+        .then(a=>{
+          this.setState(()=>{
+            return {
+              user:{
+                id:this.state.user.id,
+                name:this.state.user.name,
+                email:this.state.user.email,
+                entries: this.state.user.entries + 1
+              }
+            }
+          })
+
+          console.log(this.state)
+          console.log(a)
+        })
+
+
+
         this.setState(()=>{
           return {
             data:number_of_faces,
@@ -69,7 +93,7 @@ class App extends React.Component{
           id:user.id,
           name:user.name,
           email:user.email,
-          entries:0
+          entries: parseInt(user.entries)
         }
       }
     })
@@ -101,7 +125,7 @@ class App extends React.Component{
       return(
         <div className="my_container">
           <div className="white_box">
-          <p>{this.state.user.name}</p>
+          <p style={{textTransform: "uppercase"}}>{this.state.user.name}: Number of images:  {this.state.user.entries}</p>
           <p>{this.state.loading_status}</p>
             <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
           </div>
