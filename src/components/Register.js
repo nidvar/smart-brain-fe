@@ -31,6 +31,17 @@ class Register extends React.Component {
         })
     }
     onRegister=(e)=>{
+        let emailvalidation = this.state.email.split('');
+
+        if(this.state.password.length < 8){
+            this.props.grab_signin_result('password too short')
+            return
+        }
+        if(!emailvalidation.includes('@') || !emailvalidation.includes('.')){
+            this.props.grab_signin_result('please enter valid email')
+            return
+        }
+
         fetch('http://localhost:3001/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -47,6 +58,7 @@ class Register extends React.Component {
         })
         .then(a=>{
             console.log(a)
+            this.props.onRoutechange('home')
             this.props.grab_user(a)
         })
     }
@@ -62,7 +74,6 @@ class Register extends React.Component {
                     <br />
                     <button onClick={()=>{
                         this.onRegister()
-                        this.props.onRoutechange('home')
                     }} >Register</button>
                 </div>
             </div>

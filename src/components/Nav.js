@@ -14,6 +14,7 @@ const Nav = (props)=>{
                 <p onClick={()=>{
                     props.onRoutechange('signin')
                     props.grab_signin_result(null)
+                    props.clear_data()
                 }} >Sign Out</p>
             </div>
         )

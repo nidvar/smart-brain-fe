@@ -1,17 +1,15 @@
 import React from 'react';
 import './App.css';
-import Clarifai from 'clarifai';
+
 import Nav from './components/Nav';
 import FaceRecog from './components/FaceRecog';
 import Logo from './components/Logo';
 import ImageForm from './components/ImageForm';
 import Signin from './components/Signin';
 import Register from './components/Register';
-import clarifai_key from './api_keys/clarifai_key';
 
-const app = new Clarifai.App({
- apiKey: clarifai_key
-});
+
+
 
 class App extends React.Component{
   state={
@@ -53,8 +51,17 @@ class App extends React.Component{
         loading_status:'Loading...'
       }
     })
-    app.models.predict(Clarifai.FACE_DETECT_MODEL,this.state.input
-      ).then((response) => {
+
+    fetch(`http://localhost:3001/grab_api`, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+          user_input: this.state.input
+      })
+    }).then(a=>{
+      console.log(a)
+      return a.json()
+    }).then((response) => {
         const number_of_faces = response.outputs[0].data
         fetch(`http://localhost:3001/profile/${this.state.user.id}`)
         .then(a=>{
@@ -107,12 +114,24 @@ class App extends React.Component{
       }
     })
   }
+  clear_data = ()=>{
+    this.setState(()=>{
+      return {
+        user:{
+          id:'',
+          name:'',
+          email:'',
+          entries:0
+        }
+      }
+    })
+  }
   display=()=>{
     if(this.state.route == 'signin'){
       return(
         <div>
           <Signin onRoutechange={this.onRoutechange} grab_signin_result={this.grab_signin_result} grab_user = {this.grab_user}/>
-          <p>{this.state.signin_status}</p>
+          <p className="signin_status">{this.state.signin_status}</p>
         </div>
       )
     }
@@ -142,7 +161,7 @@ class App extends React.Component{
       <div className="App">
         <div className="header">
           <Logo />
-          <Nav onRoutechange={this.onRoutechange} route_status = {this.state.route} grab_signin_result={this.grab_signin_result}/>
+          <Nav onRoutechange={this.onRoutechange} route_status = {this.state.route} grab_signin_result={this.grab_signin_result} clear_data={this.clear_data}/>
         </div>
         {this.display()}
       </div>

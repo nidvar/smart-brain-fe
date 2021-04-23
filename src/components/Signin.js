@@ -23,6 +23,12 @@ class Signin extends React.Component {
         })
     }
     onSignIn = ()=>{
+        let emailvalidation = this.state.email.split('');
+
+        if(!emailvalidation.includes('@') || !emailvalidation.includes('.')){
+            this.props.grab_signin_result('please enter valid email')
+            return
+        }
         fetch('http://localhost:3001/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
