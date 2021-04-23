@@ -37,7 +37,12 @@ class App extends React.Component{
     })
   }
   onRoutechange = (route)=>{
-    this.setState({route:route})
+    this.setState({
+      route:route,
+      data:[],
+      url:'',
+      loading_status:'INSERT LINK OF PICTURE FOR FACIAL RECOGNITION'
+    })
   }
   onSubmit=(e)=>{
     e.preventDefault();
@@ -51,10 +56,8 @@ class App extends React.Component{
     app.models.predict(Clarifai.FACE_DETECT_MODEL,this.state.input
       ).then((response) => {
         const number_of_faces = response.outputs[0].data
-
         fetch(`http://localhost:3001/profile/${this.state.user.id}`)
         .then(a=>{
-          console.log(a.json)
           return a.json();
         })
         .then(a=>{
@@ -68,21 +71,20 @@ class App extends React.Component{
               }
             }
           })
-
-          console.log(this.state)
-          console.log(a)
         })
-
-
-
         this.setState(()=>{
           return {
             data:number_of_faces,
-            loading_status:'LOADED!'
+            loading_status:'Complete'
           }
         })
       }).catch((err) => {
         console.log(err);
+        this.setState(()=>{
+          return {
+            loading_status:'Server API Error. Please logout and try again in a moment'
+          }
+        })
       });
   }
   grab_user=(user)=>{
@@ -125,7 +127,8 @@ class App extends React.Component{
       return(
         <div className="my_container">
           <div className="white_box">
-          <p style={{textTransform: "uppercase"}}>{this.state.user.name}: Number of images:  {this.state.user.entries}</p>
+          <p>Greetings {this.state.user.name}</p>
+          <p>Number of searches: {this.state.user.entries}</p>
           <p>{this.state.loading_status}</p>
             <ImageForm grab_value={this.onChange} submit_form={this.onSubmit} />
           </div>

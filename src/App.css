@@ -56,9 +56,9 @@ body{
 
 .white_box{
   background-color:#EBE0C4;
-  color:#655E54;
+  color:black;
   max-width:800px;
-  height:150px;
+  min-height:150px;
   margin:0 auto 10px auto;
   padding:10px;
   border-radius: 20px;
