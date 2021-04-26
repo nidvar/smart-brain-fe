@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 body{
   margin:0;
   padding:0;
-  background-color:#EBE1DF
+  background-color:#EBE1DF;
+  font-family: 'Roboto', sans-serif;
 }
 
 .anotherone{
@@ -38,11 +41,19 @@ body{
 }
 
 .Tilt{
-  background-color:skyblue;
+  background-color:#EFAF67;
   margin:20px;
-  box-shadow: 5px 10px #888888;
+  box-shadow: 5px 5px #888888;
   height: 80px;
   width: 80px;
+}
+
+.Tilt-inner{
+  height:80px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
 .ImageForm{
@@ -87,4 +98,8 @@ input{
 
 .signin_status{
   text-align:center;
+}
+
+.title{
+  margin-bottom:40px;
 }

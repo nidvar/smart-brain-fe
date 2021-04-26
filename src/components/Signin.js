@@ -55,9 +55,10 @@ class Signin extends React.Component {
         return(
             <div className="Signin">
                 <div>
+                    <h1 className="title">Zero To Mastery - Smart Brain App</h1>
                     Email: <input onChange={this.onEmailChange} /> <br />
                     <br />
-                    Password: <input onChange={this.onPasswordChange} /> <br />
+                    Password: <input onChange={this.onPasswordChange} type="password"/> <br />
                     <br />
                     <button onClick={()=>{this.onSignIn()}} >Sign In</button><br /><br />
                     <button onClick={()=>{this.props.onRoutechange('register')}} >Register</button>

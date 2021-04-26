@@ -3,13 +3,9 @@ import './App.css';
 
 import Nav from './components/Nav';
 import FaceRecog from './components/FaceRecog';
-import Logo from './components/Logo';
 import ImageForm from './components/ImageForm';
 import Signin from './components/Signin';
 import Register from './components/Register';
-
-
-
 
 class App extends React.Component{
   state={
@@ -138,7 +134,7 @@ class App extends React.Component{
     if(this.state.route == 'register'){
       return(
         <div>
-          <Register onRoutechange={this.onRoutechange} grab_user = {this.grab_user}/>
+          <Register onRoutechange={this.onRoutechange} grab_user = {this.grab_user} grab_signin_result={this.grab_signin_result}/>
         </div>
       )
     }
@@ -160,7 +156,6 @@ class App extends React.Component{
     return (
       <div className="App">
         <div className="header">
-          <Logo />
           <Nav onRoutechange={this.onRoutechange} route_status = {this.state.route} grab_signin_result={this.grab_signin_result} clear_data={this.clear_data}/>
         </div>
         {this.display()}

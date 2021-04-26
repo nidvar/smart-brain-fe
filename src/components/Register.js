@@ -34,6 +34,7 @@ class Register extends React.Component {
         let emailvalidation = this.state.email.split('');
 
         if(this.state.password.length < 8){
+            console.log(this.state.password.length)
             this.props.grab_signin_result('password too short')
             return
         }
@@ -46,7 +47,6 @@ class Register extends React.Component {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                id:4,
                 email: this.state.email,
                 password: this.state.password,
                 name: this.state.name,
@@ -70,7 +70,7 @@ class Register extends React.Component {
                     <br />
                     Email: <input onChange={this.onEmailChange} /> <br />
                     <br />
-                    Password: <input onChange={this.onPasswordChange} /> <br />
+                    Password: <input onChange={this.onPasswordChange} type="password"/> <br />
                     <br />
                     <button onClick={()=>{
                         this.onRegister()
