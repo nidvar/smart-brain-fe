@@ -48,7 +48,7 @@ class App extends React.Component{
       }
     })
 
-    fetch(`http://localhost:3001/grab_api`, {
+    fetch(`https://polar-plateau-44003.herokuapp.com/grab_api`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -59,7 +59,7 @@ class App extends React.Component{
       return a.json()
     }).then((response) => {
         const number_of_faces = response.outputs[0].data
-        fetch(`http://localhost:3001/profile/${this.state.user.id}`)
+        fetch(`https://polar-plateau-44003.herokuapp.com/profile/${this.state.user.id}`)
         .then(a=>{
           return a.json();
         })
