@@ -43,7 +43,7 @@ class Register extends React.Component {
             return
         }
 
-        fetch('https://fierce-everglades-53575.herokuapp.com/https:/https://polar-plateau-44003.herokuapp.com/register', {
+        fetch('https://fierce-everglades-53575.herokuapp.com/https://polar-plateau-44003.herokuapp.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
