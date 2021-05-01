@@ -23,6 +23,7 @@ class Signin extends React.Component {
         })
     }
     onSignIn = ()=>{
+        this.props.grab_signin_result('')
         let emailvalidation = this.state.email.split('');
 
         if(!emailvalidation.includes('@') || !emailvalidation.includes('.')){
@@ -47,7 +48,7 @@ class Signin extends React.Component {
                 console.log(a[0])
                 this.props.grab_user(a[0])
             }else{
-                this.props.grab_signin_result('fail')
+                this.props.grab_signin_result('password fail')
             }
         })
     }
@@ -57,7 +58,9 @@ class Signin extends React.Component {
                 <div>
                     <div className="title">
                         <h1>Zero To Mastery - Smart Brain App</h1>
-                        <p>React - Node - Express - PostgreSQL</p>
+                        <h3>React - Node - Express - PostgreSQL</h3>
+                        <p>This full stack app uses Clarifai's facial recognition API to find faces in any photographs you upload.</p>
+                        <p>Sign in or register to use this app.</p>
                     </div>
                     Email: <input onChange={this.onEmailChange} /> <br />
                     <br />

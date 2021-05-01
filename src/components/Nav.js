@@ -11,17 +11,17 @@ const Nav = (props)=>{
     }else if(props.route_status == 'home'){
         return(
             <div className="Nav">
-                <p onClick={()=>{
+                <h2 onClick={()=>{
                     props.onRoutechange('signin')
                     props.grab_signin_result(null)
                     props.clear_data()
-                }} >Sign Out</p>
+                }} >Sign Out</h2>
             </div>
         )
     }else if(props.route_status =='register'){
         return(
             <div className="Nav">
-                <p onClick={()=>{props.onRoutechange('signin')}} >Back</p>
+                <h2 onClick={()=>{props.onRoutechange('signin')}} >Back</h2>
             </div>
         )
     }

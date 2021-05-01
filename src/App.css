@@ -28,16 +28,12 @@ body{
 }
 
 .Nav{
-  margin:10px;
+  margin:10px 30px 10px 10px;
+  text-align: right;
 }
 
-.Nav p:hover{
+.Nav h2:hover{
   cursor:pointer;
-}
-
-.header{
-  display:flex;
-  justify-content: space-between;
 }
 
 .Tilt{
@@ -83,6 +79,10 @@ button{
   color:white;
 }
 
+button:hover{
+  cursor:pointer;
+}
+
 input{
   border-radius: 15px;
   border:none;
@@ -103,4 +103,8 @@ input{
 .title{
   margin-bottom:40px;
   text-align: center;
+}
+
+p{
+  line-height:30px;
 }
