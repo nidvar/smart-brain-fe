@@ -108,3 +108,24 @@ input{
 p{
   line-height:30px;
 }
+
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: lightblue;
+    padding:10px;
+  }
+
+  .Signin{
+    width:100%;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .Nav{
+    margin:15px;
+    text-align: center;
+  }
+
+
+}
