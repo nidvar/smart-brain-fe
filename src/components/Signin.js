@@ -29,7 +29,7 @@ class Signin extends React.Component {
             this.props.grab_signin_result('please enter valid email')
             return
         }
-        fetch('https://fierce-everglades-53575.herokuapp.com/https://polar-plateau-44003.herokuapp.com/signin', {
+        fetch('https://polar-plateau-44003.herokuapp.com/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -55,7 +55,10 @@ class Signin extends React.Component {
         return(
             <div className="Signin">
                 <div>
-                    <h1 className="title">Zero To Mastery - Smart Brain App</h1>
+                    <div className="title">
+                        <h1>Zero To Mastery - Smart Brain App</h1>
+                        <p>React - Node - Express - PostgreSQL</p>
+                    </div>
                     Email: <input onChange={this.onEmailChange} /> <br />
                     <br />
                     Password: <input onChange={this.onPasswordChange} type="password"/> <br />
